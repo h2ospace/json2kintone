@@ -1,0 +1,12 @@
+{
+    "name": "h2ospace/json2kintone",
+    "description": "kintone with JSON library",
+    "type": "library",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "H2O space",
+            "email": "support@h2o-space.com"
+        }
+    ]
+}

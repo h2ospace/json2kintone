@@ -1,0 +1,7 @@
+/vendor/
+
+# OS
+.DS_Store
+
+# json file for test
+src/config.json

@@ -51,7 +51,7 @@ class Json2kintone {
 
         $curl = curl_init();
 
-        curl_setopt($curl, CURLOPT_URL, 'https://' . $this->config->$kintone->domain . '/k/guest/20/v1/records.json');
+        curl_setopt($curl, CURLOPT_URL, 'https://' . $this->config->$kintone->domain . '/k/v1/records.json');
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
@@ -79,10 +79,6 @@ class Json2kintone {
      */
     public function save($app, $data, $kintone = 'default') {
         if (empty($this->config->$kintone)) die('Unknown kintone code');
-
-        if ($_SERVER['SERVER_NAME'] != 'wizmu.jp') {
-            $kintone = 'develop';
-        }
 
         // get a app data
         $app_data = '';
@@ -123,7 +119,7 @@ class Json2kintone {
 //        $contents = file_get_contents('https://' . $this->config->$kintone->domain . '/k/v1/record.json', false, $context);
         $curl = curl_init();
 
-        curl_setopt($curl, CURLOPT_URL, 'https://' . $this->config->$kintone->domain . '/k/guest/20/v1/record.json');
+        curl_setopt($curl, CURLOPT_URL, 'https://' . $this->config->$kintone->domain . '/k//v1/record.json');
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST'); // post
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body)); // jsonデータを送信
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header); // リクエストにヘッダーを含める
@@ -192,7 +188,7 @@ class Json2kintone {
 //        $contents = file_get_contents('https://' . $this->config->$kintone->domain . '/k/v1/record.json', false, $context);
         $curl = curl_init();
 
-        curl_setopt($curl, CURLOPT_URL, 'https://' . $this->config->$kintone->domain . '/k/guest/20/v1/record.json');
+        curl_setopt($curl, CURLOPT_URL, 'https://' . $this->config->$kintone->domain . '/k/v1/record.json');
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT'); // post
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body)); // jsonデータを送信
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header); // リクエストにヘッダーを含める
@@ -239,7 +235,7 @@ class Json2kintone {
 
         $param = 'app=' . $app_data->app_id . '&query=' . urlencode($query);
 
-        $contents = file_get_contents('https://' . $this->config->$kintone->domain . '/k/guest/20/v1/records.json?' . $param, false, $context);
+        $contents = file_get_contents('https://' . $this->config->$kintone->domain . '/k/v1/records.json?' . $param, false, $context);
         if ($contents) {
             $json = json_decode($contents);
             return $json->records;
